@@ -15,27 +15,40 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Routes
+// HTML Routes
 //====================
-app.get("/", function(req, res) {
+// Home page
+app.get("/", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"));
-  });
+});
 
-app.get("/notes", function(req, res) {
+// Notes page
+app.get("/notes", function (req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
-  });
+});
 
-app.get("/api/notes", function(req, res) {
+// API Routes
+//====================
+// Return saved notes as JSON
+app.get("/api/notes", function (req, res) {
     return res.json(db);
+});
+
+// Save new notes to db and return new note
+app.post("/api/notes", function(req, res) {
+    // req.body hosts is equal to the JSON post sent from the user
+    var newNote = req.body;
+    
+    console.log(newNote);
+  
+    return res.json(newNote);
   });
-
-
 
 
 
 // Start server
 //====================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
-  });
+});
 
