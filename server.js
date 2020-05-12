@@ -14,6 +14,7 @@ var PORT = 3000;
 //====================
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('public'));
 
 // HTML Routes
 //====================
@@ -38,9 +39,9 @@ app.get("/api/notes", function (req, res) {
 app.post("/api/notes", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
     var newNote = req.body;
-    
+
     console.log(newNote);
-  
+    
     return res.json(newNote);
   });
 

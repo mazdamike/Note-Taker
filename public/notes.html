@@ -32,17 +32,18 @@
       <div class="col-8">
         <form method="POST" role="form">
         <div class="form-group">
-          <input class="note-title" placeholder="Note Title" maxlength="28" type="text">
+          <input class="note-title" id="note-title" placeholder="Note Title" maxlength="28" type="text">
         </div>
         <div class="form-group">
-          <textarea class="note-textarea" placeholder="Note Text"></textarea>
+          <textarea class="note-textarea" id="note-text" placeholder="Note Text"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary btn-md" id="add-btn">Save Note</button>
+        <button type="submit" class="btn btn-primary btn-md save-note" id="add-btn">Save Note</button>
         </form>
         
       </div>
     </div>
   </div>
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="/assets/js/index.js"></script>
 </body>
