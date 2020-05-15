@@ -38,13 +38,25 @@ app.get("/api/notes", function (req, res) {
 // Save new notes to db and return new note
 app.post("/api/notes", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
-    var newNote = req.body;
-
-    console.log(newNote);
+    var newNote = JSON.stringify(req.body);
+    // var noteId = 1;
+    // newNote.id = noteId;
+        
     
+    db.push(JSON.parse(newNote));
+    console.log(db);
     return res.json(newNote);
   });
 
+// Delete notes
+// app.delete("/api/notes/:id", function(req, res) {
+//   function removeNote() = newNote.filter(note) {
+//   if (note.id === noteId) {
+     
+   
+//   }
+// }
+// });
 
 
 // Start server
@@ -52,4 +64,3 @@ app.post("/api/notes", function(req, res) {
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
-
