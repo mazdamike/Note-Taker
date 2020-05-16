@@ -49,7 +49,11 @@ app.post("/api/notes", function(req, res) {
 });
 
 // Delete notes from the db
+app.delete("/api/notes/:id", function(req, res) {
+    var id = req.params.id;
+    console.log(id);
 
+});
 
 
 
