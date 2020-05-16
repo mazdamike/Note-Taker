@@ -4,6 +4,7 @@ var express = require("express");
 var path = require("path");
 var fs = require("fs");
 var db = require("./db/db.json");
+var newId = 1;
 
 // Express app
 //====================
@@ -37,26 +38,21 @@ app.get("/api/notes", function (req, res) {
 
 // Save new notes to db and return new note
 app.post("/api/notes", function(req, res) {
-    // req.body hosts is equal to the JSON post sent from the user
-    var newNote = JSON.stringify(req.body);
-    // var noteId = 1;
-    // newNote.id = noteId;
-        
+    req.body.id = newId;
+    newId ++;
+    var newNote = (req.body);
+    db.push(newNote);
     
-    db.push(JSON.parse(newNote));
     console.log(db);
     return res.json(newNote);
-  });
+        
+});
 
-// Delete notes
-// app.delete("/api/notes/:id", function(req, res) {
-//   function removeNote() = newNote.filter(note) {
-//   if (note.id === noteId) {
-     
-   
-//   }
-// }
-// });
+// Delete notes from the db
+
+
+
+
 
 
 // Start server
