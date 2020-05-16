@@ -37,26 +37,27 @@ app.get("/api/notes", function (req, res) {
 });
 
 // Save new notes to db and return new note
-app.post("/api/notes", function(req, res) {
+app.post("/api/notes", function (req, res) {
     req.body.id = newId;
-    newId ++;
+    newId++;
     var newNote = (req.body);
+
     db.push(newNote);
     
     console.log(db);
     return res.json(newNote);
-        
+
 });
 
 // Delete notes from the db
-app.delete("/api/notes/:id", function(req, res) {
-    var id = req.params.id;
-    console.log(id);
-
+app.delete("/api/notes/:id", function (req, res) {
+    var idToDel = req.params.id;
+    var newNoteArray = db.filter((note) => note.id != idToDel);
+     
+    db = newNoteArray;
+    console.log(db);
+    return res.json(db);
 });
-
-
-
 
 
 // Start server
